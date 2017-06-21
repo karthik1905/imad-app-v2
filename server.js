@@ -11,10 +11,7 @@ var articleone = {
  date : ' june 20 2017' ,
  content : `
  <p>
-            this is   the content of the article and v can hav fun. dfbuhasgrhfbakeygrhbrshgfjffhskfsg,jhfsbjgdjhb,jrhhhhhhhhhhhhhhhhhhjjjjjjjjjjjjjjjjjjjjjddddddddddddddddkkkkkkkkkkk
-            nt of the article and v can hav fun. dfbuhasgrhfbakeygrhbrshgfjffhskfsg,jhfsbjgdjhb,jrhhhhhhhhhhhhhhhhhhjjjjjjjjjjjjjjjjjjjjjddddddddddddddddkkkkkkkkkkk
-            nt of the article and v can hav fun. dfbuhasgrhfbakeygrhbrshgfjffhskfsg,jhfsbjgdjhb,jrhhhhhhhhhhhhhhhhhhjjjjjjjjjjjjjjjjjjjjjddddddddddddddddkkkkkkkkkkk
-        </p>`
+            this is   the content of the article    </p>`
 };
 
 function createtemplate (data) {
@@ -58,6 +55,9 @@ var htmltemplate = `
 `;
 return htmltemplate ;
 }
+app.get('/',function(req,res) {
+res.sendfile(path.join(__dirname , 'ui', 'index.html'));
+});
 var counter=0;
 app.get('/counter', function (req, res) {
   counter = counter +1;
@@ -74,6 +74,14 @@ app.get('/ui/style.css', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
+var names=[];
+app.get('/submit-name/:name' ,function(req,res){
+    var name= req.params.name;
+
+    names.push(name);
+
+    res.send(JSON.stringify(names));
+})
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
