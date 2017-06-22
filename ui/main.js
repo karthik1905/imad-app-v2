@@ -7,10 +7,10 @@ button.onclick=function() {
  
  //capture the response and store it in a vaiable
   request.onreadystatechange =  function() {
-      if(request.readyState === XMLHTTPRequest.DONE) {
+      if(request.readyState === XMLHttpRequest.DONE) {
           //take some action
           if(request.status == 200) {
-              var counter = request .responseText;
+              var counter = request.responseText;
               counter = counter + 1;
               var span = document.getElementById('count');
               span.innerHTML = counter.toString();
@@ -23,7 +23,7 @@ button.onclick=function() {
  request.send(null);
 };
  //submit none
- var nameINput= document.getElementById('name');
+/* var nameINput= document.getElementById('name');
 var name = nameInput.value;
  var submit = document.getElementById('submit_btn');
  submit.onclick = function() {
@@ -35,4 +35,4 @@ var name = nameInput.value;
    }
    var ul = document.getElementById('namelist');
    ul.innerHTML = list;
- };
+ };/*
